@@ -1,1 +1,1 @@
-public class BarradeVidaInimigo : BarraDeVida { }
+public class BarraDeVidaInimigo : BarraDeVida { }

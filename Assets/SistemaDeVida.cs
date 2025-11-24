@@ -1,3 +1,4 @@
+
 using System;
 using UnityEngine;
 
@@ -5,12 +6,13 @@ public class SistemaDeVida : MonoBehaviour
 {
     public BarraDeVida barraDeVida;
 
+    //Mostra na unity um slider que vai de 0 a 100
     [Range(0, 100)]
     public float vidaMaxima = 100f;
-
     [Range(0, 100)]
     public float vidaAtual;
 
+    // Start is called before the first frame update
     protected void Start()
     {
         vidaAtual = vidaMaxima;
@@ -20,7 +22,6 @@ public class SistemaDeVida : MonoBehaviour
     public virtual void AplicarDano(float dano)
     {
         vidaAtual -= dano;
-
         if (vidaAtual <= 0)
         {
             Morrer();
@@ -29,7 +30,7 @@ public class SistemaDeVida : MonoBehaviour
         AtualizarVida();
     }
 
-    private void AtualizarVida()
+    private void AtualizarVida() //No futuro isso poderia ser controlado através de eventos
     {
         barraDeVida.AtualizarUI(vidaAtual / vidaMaxima);
     }
@@ -37,5 +38,10 @@ public class SistemaDeVida : MonoBehaviour
     protected virtual void Morrer()
     {
         Debug.Log("Morreu");
+    }
+
+    internal void AplicarDano(object dano)
+    {
+        throw new NotImplementedException();
     }
 }
