@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 403571936}
   - component: {fileID: 403571935}
   - component: {fileID: 403571934}
-  - component: {fileID: 403571933}
+  - component: {fileID: 403571937}
   m_Layer: 0
   m_Name: Barra de Vida
   m_TagString: Untagged
@@ -781,19 +781,6 @@ RectTransform:
   m_AnchoredPosition: {x: 71.16, y: 30.78}
   m_SizeDelta: {x: 774, y: 304}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &403571933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403571931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4524aca74a954804b9fbcbcf29175562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaAtualImage: {fileID: 378496163}
 --- !u!114 &403571934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,6 +843,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &403571937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403571931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bc749d3bbc71e4c9f4dbf75e9bfa94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaAtualImage: {fileID: 378496163}
 --- !u!1001 &445182885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1653,10 +1653,13 @@ GameObject:
   - component: {fileID: 1181843851}
   - component: {fileID: 1181843853}
   - component: {fileID: 1181843852}
+  - component: {fileID: 1181843855}
   - component: {fileID: 1181843854}
+  - component: {fileID: 1181843857}
+  - component: {fileID: 1181843856}
   m_Layer: 0
   m_Name: GHOST
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1762,6 +1765,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c967f97dc4622bd43bba3d6f6eb15cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
+  maxHealth: 2
+  knockbackForce: 5
+  movingRight: 1
+--- !u!114 &1181843855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181843850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4522df9a99a7144ad0177a7bddff91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barraDeVida: {fileID: 403571937}
+  vidaMaxima: 100
+  vidaAtual: 0
+--- !u!61 &1181843856
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181843850}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.6, y: 1.12}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 1.12}
+  m_EdgeRadius: 0
+--- !u!50 &1181843857
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181843850}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1187851816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1819,6 +1888,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 824c9e8e038270d429b99c9f143a69ff, type: 3}
+--- !u!1 &1216487718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1216487719}
+  - component: {fileID: 1216487721}
+  - component: {fileID: 1216487720}
+  m_Layer: 0
+  m_Name: Hitbox Jogador
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1216487719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216487718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2077261404}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1216487720
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216487718}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.35400677, y: -0.067350164}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.29198647, y: 0.506099}
+  m_EdgeRadius: 0
+--- !u!114 &1216487721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216487718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4656bf41d58594da44ad702ecd8b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danoJogador: 10
 --- !u!1 &1226578075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +1972,6 @@ GameObject:
   - component: {fileID: 1226578080}
   - component: {fileID: 1226578079}
   - component: {fileID: 1226578078}
-  - component: {fileID: 1226578076}
   - component: {fileID: 1226578081}
   m_Layer: 0
   m_Name: Barra de Vida
@@ -1840,19 +1980,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1226578076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226578075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4524aca74a954804b9fbcbcf29175562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaAtualImage: {fileID: 1671548454}
 --- !u!224 &1226578077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1872,7 +1999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 87.3, y: 37.19}
+  m_AnchoredPosition: {x: 87.23, y: 37.45}
   m_SizeDelta: {x: 774, y: 304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1226578078
@@ -1946,9 +2073,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1226578075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4656bf41d58594da44ad702ecd8b16, type: 3}
+  m_Script: {fileID: 11500000, guid: 4524aca74a954804b9fbcbcf29175562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidaAtualImage: {fileID: 1671548454}
 --- !u!1001 &1227418664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3166,6 +3294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1226578077}
+  - {fileID: 1216487719}
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3316,7 +3445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe43a72d2d062645822ce684cdb5ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barraDeVida: {fileID: 1226578076}
+  barraDeVida: {fileID: 1226578081}
   vidaMaxima: 100
   vidaAtual: 0
 --- !u!1001 &2136246458
