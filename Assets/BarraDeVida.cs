@@ -1,16 +1,46 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class BarraDeVida : MonoBehaviour
+public class SistemaDeVida : MonoBehaviour
 {
-    public Image vidaAtualImage;
+    public BarraDeVida barraDeVida;
 
-    public void AtualizarUI(float calculoVida)
+    //Mostra na unity um slider que vai de 0 a 100
+    [Range(0, 100)]
+    public float vidaMaxima = 100f;
+    [Range(0, 100)]
+    public float vidaAtual;
+
+    // Start is called before the first frame update
+    protected void Start()
     {
-        if (calculoVida >= 0)
+        vidaAtual = vidaMaxima;
+        AtualizarVida();
+    }
+
+    public virtual void AplicarDano(float dano)
+    {
+        vidaAtual -= dano;
+        if (vidaAtual <= 0)
         {
-            Vector3 novaEscala = new Vector3(calculoVida, 1, 1);
-            vidaAtualImage.transform.localScale = novaEscala;
+            Morrer();
         }
+
+        AtualizarVida();
+    }
+
+    private void AtualizarVida() //No futuro isso poderia ser controlado através de eventos
+    {
+        barraDeVida.AtualizarUI(vidaAtual / vidaMaxima);
+    }
+
+    protected virtual void Morrer()
+    {
+        Debug.Log("Morreu");
+    }
+
+    internal void AplicarDano(object dano)
+    {
+        throw new NotImplementedException();
     }
 }
